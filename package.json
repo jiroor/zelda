@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cp src/template/*.html public/ && cp src/script/*.js public/js/",
     "gh-pages" :"git subtree push --prefix public origin gh-pages"
   },
   "repository": "git@github.com:jiroor/zelda.git",
