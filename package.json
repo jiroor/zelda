@@ -1,0 +1,12 @@
+{
+  "name": "zelda",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gh-pages" :"git subtree push --prefix public origin gh-pages"
+  },
+  "repository": "git@github.com:jiroor/zelda.git",
+  "author": "jiroor <thx.1by1.or25@gmail.com>",
+  "license": "MIT"
+}
