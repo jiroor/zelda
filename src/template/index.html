@@ -8,51 +8,58 @@
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.3/vue.min.js"></script>
-	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.3.0/vue-router.min.js"></script>
-	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
-	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
-	<script defer src="./js/index.js"></script>
+	<style>
+		[v-cloak] {
+			display: none;
+		}
+	</style>
 </head>
 <body>
-	<div id="app">
+	<div id="app" v-cloak>
 
-		<!-- Always shows a header, even in smaller screens. -->
-		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-			<header class="mdl-layout__header">
-				<div class="mdl-layout__header-row">
-					<!-- Title -->
-					<span class="mdl-layout-title">{{title}}</span>
+		<mdl-layout :fixed-header="true">
+			<mdl-layout-header-row slot="header" :title="title">
+				<mdl-layout-spacer></mdl-layout-spacer>
 
-					<!-- Add spacer, to align navigation to the right -->
-					<div class="mdl-layout-spacer"></div>
+				<mdl-nav class="mdl-layout--large-screen-only">
+					<router-link class="mdl-navigation__link" v-for="route in routes" :to="route.path">{{route.title}}</router-link>
+				</mdl-nav>
+			</mdl-layout-header-row>
 
-					<!-- Navigation. We hide it in small screens. -->
-					<nav class="mdl-navigation mdl-layout--large-screen-only">
-						<router-link class="mdl-navigation__link"
-												 v-for="route in routes"
-												 :to="route.path">{{route.title}}</router-link>
-					</nav>
-				</div>
-			</header>
 
-			<div class="mdl-layout__drawer">
-				<span class="mdl-layout-title">{{title}}</span>
-				<nav class="mdl-navigation">
-					<router-link class="mdl-navigation__link"
-											 v-for="route in routes"
-											 :to="route.path">{{route.title}}</router-link>
-				</nav>
-			</div>
+			<mdl-layout-drawer :title="title">
+				<mdl-nav>
+					<router-link class="mdl-navigation__link" v-for="route in routes" :to="route.path">{{route.title}}</router-link>
+				</mdl-nav>
+			</mdl-layout-drawer>
 
-			<main class="mdl-layout__content">
+
+			<mdl-layout-content>
 				<div class="page-content">
 					<router-view></router-view>
 				</div>
-			</main>
-		</div>
+			</mdl-layout-content>
+		</mdl-layout>
 
 	</div>
+
+	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.3/vue.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.3.0/vue-router.min.js"></script>
+	<script src="https://rawgit.com/posva/vue-mdl/master/dist/vue-mdl.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+	<script src="https://www.w3schools.com/lib/w3data.js"></script>
+
+	<div w3-include-html="page/home.html"></div>
+	<div w3-include-html="page/tips.html"></div>
+	<div w3-include-html="page/recipe.html"></div>
+
+	<script src="./js/namespace.js"></script>
+	<script src="./js/core.js"></script>
+	<script src="./js/page/home.js"></script>
+	<script src="./js/page/tips.js"></script>
+	<script src="./js/page/recipe.js"></script>
+	<script src="./js/app.js"></script>
 </body>
 </html>

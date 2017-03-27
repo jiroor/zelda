@@ -1,28 +1,20 @@
 (function(global) {
 	'use strict';
 
-	var Home = {
-		template: '<div>home</div>'
-	};
-	var Tips = {
-		template: '<div>tips</div>'
-	};
-	var Recipe = {
-		template: '<div>recipe</div>'
-	};
+	Vue.use(VueMdl.default);
 
 	var routes = [{
 		title: 'Home',
 		path: '/',
-		component: Home
+		component: using('page.home')
 	}, {
 		title: 'Tips',
 		path: '/tips',
-		component: Tips
+		component: using('page.tips')
 	}, {
 		title: 'Recipe',
 		path: '/recipe',
-		component: Recipe
+		component: using('page.recipe')
 	}];
 
 	var router = new VueRouter({
@@ -35,9 +27,18 @@
 
 			return {
 				title: 'ゼルダの伝説 BotW',
+				routes: _.map(routes, _.partial(_.pick, _, ['title', 'path'])),
 
-				routes: _.map(routes, _.partial(_.pick, _, ['title', 'path']))
+				showDrawer: false
 			};
+		},
+
+		methods: {
+			to: function(path) {
+				var self = this;
+
+				self.showDrawer = false;
+			}
 		},
 
 		router: router
