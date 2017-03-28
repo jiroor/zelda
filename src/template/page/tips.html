@@ -1,7 +1,7 @@
 <script type="text/x-template" id="template--page--tips">
 
-<div>
-	<mdl-card v-for="tip in tips" :title="tip.title" :supporting-text="tip.description"></mdl-card>
+<div class="mdl-grid">
+	<mdl-card class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--4-col-phone" v-for="tip in tips" :title="tip.title" :supporting-text="tip.description"></mdl-card>
 </div>
 
 </script>
