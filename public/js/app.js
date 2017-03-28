@@ -23,21 +23,17 @@
 
 	var app = {
 		data: function() {
-			var self = this;
-
 			return {
 				title: 'ゼルダの伝説 BotW',
-				routes: _.map(routes, _.partial(_.pick, _, ['title', 'path'])),
-
-				showDrawer: false
+				routes: _.map(routes, _.partial(_.pick, _, ['title', 'path']))
 			};
 		},
 
 		methods: {
-			to: function(path) {
-				var self = this;
-
-				self.showDrawer = false;
+			closeMenu: function() {
+				if (this.$refs.drawer.$el.classList.contains('is-visible')) {
+					this.$refs.menu.$el.MaterialLayout.drawerToggleHandler_();
+				}
 			}
 		},
 

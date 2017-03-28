@@ -3,17 +3,14 @@
 
 	var tips = {
 		data: function() {
-			var self = this;
-
 			return {
 				tips: []
 			};
 		},
 
 		created: function() {
-			var self = this;
 			var promises = {
-				tips: self.getTips()
+				tips: this.getTips()
 			};
 
 			Promise.props(promises);

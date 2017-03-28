@@ -17,19 +17,19 @@
 <body>
 	<div id="app" v-cloak>
 
-		<mdl-layout :fixed-header="true">
+		<mdl-layout :fixed-header="true" ref="menu">
 			<mdl-layout-header-row slot="header" :title="title">
 				<mdl-layout-spacer></mdl-layout-spacer>
 
 				<mdl-nav class="mdl-layout--large-screen-only">
-					<router-link class="mdl-navigation__link" v-for="route in routes" :to="route.path">{{route.title}}</router-link>
+					<router-link v-for="route in routes" @click.native="closeMenu()" :to="route.path" class="mdl-navigation__link">{{route.title}}</router-link>
 				</mdl-nav>
 			</mdl-layout-header-row>
 
 
-			<mdl-layout-drawer :title="title">
+			<mdl-layout-drawer :title="title" ref="drawer">
 				<mdl-nav>
-					<router-link class="mdl-navigation__link" v-for="route in routes" :to="route.path">{{route.title}}</router-link>
+					<router-link v-for="route in routes" @click.native="closeMenu()" :to="route.path" class="mdl-navigation__link">{{route.title}}</router-link>
 				</mdl-nav>
 			</mdl-layout-drawer>
 
