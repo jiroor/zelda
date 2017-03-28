@@ -76,7 +76,7 @@
      * @returns {String} ajaxのurl
      */
     function formatReqUrl(url) {
-      return ['http://jiroor.herokuapp.com', url].join('');
+      return ['http://jiroor.herokuapp.com/api', url].join('');
     }
 
     /**

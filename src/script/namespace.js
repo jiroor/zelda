@@ -36,8 +36,6 @@
 		if (!_.isUndefined(object)) {
 			_.set(c.root, path, object);
 		}
-
-		return _.get(c.root, path);
 	}
 
 	/**
