@@ -13,6 +13,20 @@
 			display: none;
 		}
 	</style>
+
+	<style>
+		.mdl-card {
+			max-width: 300px;
+		}
+		.mdl-grid.mdl-grid--justify-center {
+			-webkit-justify-content: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+		}
+		.mdl-card--move {
+			transition: transform 1s;
+		}
+	</style>
 </head>
 <body>
 	<div id="app" v-cloak>
@@ -58,6 +72,8 @@
 	<script src="./js/namespace.js"></script>
 	<script src="./js/core.js"></script>
 	<script src="./js/lib/fetch.js"></script>
+
+	<script src="./js/module/transition.js"></script>
 
 	<script src="./js/page/home.js"></script>
 	<script src="./js/page/tips.js"></script>

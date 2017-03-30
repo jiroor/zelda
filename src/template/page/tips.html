@@ -1,7 +1,27 @@
 <script type="text/x-template" id="template--page--tips">
 
-<div class="mdl-grid">
-	<mdl-card class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--4-col-phone" v-for="tip in tips" :title="tip.title" :supporting-text="tip.description"></mdl-card>
+<div>
+
+	<mdl-button raised @click.native="$refs.filter.open" :style="{margin: '16px'}">
+		<i class="material-icons">filter_list</i>
+		絞り込み
+	</mdl-button>
+
+	<mdl-dialog title="絞り込み" full-width ref="filter">
+		<mdl-select label="カテゴリ" id="category-select" v-model="filterBy.category" :options="categories" @input="select" ref="select"></mdl-select>
+		<mdl-textfield floating-label="キーワード" v-model="filterBy.keyword"></mdl-textfield>
+
+		<template slot="actions">
+			<mdl-button primary @click.native="filter">実行する</mdl-button>
+			<mdl-button @click.native="$refs.filter.close">閉じる</mdl-button>
+		</template>
+	</mdl-dialog>
+
+
+	<transition-group class="mdl-grid mdl-grid--justify-center" name="card" tag="div">
+		<mdl-card class="mdl-cell mdl-card--move" v-for="(tip, index) in tips" :key="tip.description" :title="tip.title" :supporting-text="tip.description"></mdl-card>
+	</transition-group>
+
 </div>
 
 </script>
